@@ -1,0 +1,117 @@
+.landing {
+  min-height: 100vh; background: #0A0A0A; color: white;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+
+.landing-bg { position: fixed; inset: 0; pointer-events: none; }
+.bg-circle {
+  position: absolute; border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+.c1 {
+  width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,16,46,0.15) 0%, transparent 70%);
+  top: -200px; left: -200px; animation-delay: 0s;
+}
+.c2 {
+  width: 400px; height: 400px; background: radial-gradient(circle, rgba(200,16,46,0.1) 0%, transparent 70%);
+  bottom: -100px; right: -100px; animation-delay: 3s;
+}
+.c3 {
+  width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+  top: 40%; left: 60%; animation-delay: 5s;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+.grid-overlay {
+  inset: 0; position: absolute;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.landing-content {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 48px; z-index: 10; padding: 40px 20px; width: 100%; max-width: 900px;
+}
+
+.anim-block { text-align: center; opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.anim-block.visible { opacity: 1; transform: translateY(0); }
+
+.logo-badge {
+  display: inline-block; background: rgba(200,16,46,0.2); border: 1px solid rgba(200,16,46,0.4);
+  color: #C8102E; font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 20px; text-transform: uppercase;
+}
+
+.headline { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.word {
+  font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px;
+  line-height: 1; display: block;
+}
+.w1 { font-size: clamp(80px, 12vw, 140px); color: #C8102E; }
+.w2 { font-size: clamp(80px, 12vw, 140px); color: white; }
+
+.subheadline {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(24px, 4vw, 48px);
+  color: rgba(255,255,255,0.5); letter-spacing: 6px; margin-top: 8px;
+  opacity: 0; transform: translateX(-20px); transition: all 0.6s ease 0.2s;
+}
+.subheadline.slide-in { opacity: 1; transform: translateX(0); }
+
+.tagline {
+  font-size: 16px; color: rgba(255,255,255,0.3); letter-spacing: 3px;
+  text-transform: uppercase; margin-top: 12px; font-weight: 500;
+  opacity: 0; transition: opacity 0.6s ease 0.4s;
+}
+.tagline.fade-in { opacity: 1; }
+
+.role-cards { width: 100%; text-align: center; opacity: 0; transition: all 0.6s ease; }
+.role-cards.cards-visible { opacity: 1; }
+
+.choose-label {
+  font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 20px; font-weight: 500;
+}
+
+.cards-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.role-card {
+  background: #ffffff;
+color: #000;
+border: 1px solid #ddd;
+box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 28px 24px; cursor: pointer; text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); width: 220px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: cardIn 0.5s ease forwards; opacity: 0;
+  position: relative; overflow: hidden;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.role-card::before {
+  display: none;
+}
+
+.role-card:hover { border-color: #C8102E; transform: translateY(-6px); box-shadow: 0 20px 40px rgba(200,16,46,0.2); }
+.role-card:hover {
+  background: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+.role-card:hover::before { opacity: 1; }
+.role-card:hover .role-arrow { transform: translateX(4px); color: #C8102E; }
+
+.role-icon { font-size: 36px; margin-bottom: 4px; }
+.role-label { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; }
+.role-desc { font-size: 12px; color: #555; line-height: 1.5; }
+.role-arrow { font-size: 18px; color: #333; transition: all 0.3s ease; margin-top: 4px; }
+
+.landing-footer {
+  position: fixed; bottom: 20px; color: #666;
+  font-size: 12px; letter-spacing: 1px;
+}
